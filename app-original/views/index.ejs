@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Monday Motivation </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/full.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <!-- Put your page content here! -->
+    <!--Mask-->
+    <div class="view">
+        <!--Intro content-->
+        <div class="full-bg-img flex-center">
+            <!--/.Mask-->
+            <form action="/quotes" method="POST">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="form-group">
+                            <label for="code">Search</label>
+                            <input type="text" id="search" placeholder="search" name="name" class="form-control input-lg">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="boundingbox">
+
+                    <div class="row">
+
+                        <div class="col-md-2 col-md-offset-8">
+                            <a class="btn btn-primary btn-lg" href="/quotes" role="button">Add a quote</a>
+                        </div>
+                         <div class="col-md-2 col-md-offset-8">
+                            <a class="btn btn-primary btn-lg" href="/meme?quote=<%= quotes[0].quote %>" role="button">Meme</a>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="quotebox">
+                                <h1 class="display-3">
+                                    <%= quotes[0].quote %>
+                                </h1>
+                                <p class="lead">
+                                    --
+                                    <%= quotes[0].name %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--/Intro content-->
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#search").autocomplete({
+                select: function (e, ui) {
+                    $("#search").val(ui.item.label);
+                    return false;
+                },
+
+                source: function (request, response) {
+                    $.ajax({
+                        url: "search?q=" + request.term,
+                        data: request,
+                        success: function (data) {
+                            //var ParsedObject = $.parseJSON(data);
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.quote + "-" + item.name,
+                                    value: item.name
+                                };
+
+                            }))
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

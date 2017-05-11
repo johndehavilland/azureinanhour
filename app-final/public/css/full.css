@@ -1,0 +1,45 @@
+
+html,
+body,
+.view {
+    height: 100%;
+}
+
+.view {
+     background: url('/css/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.boundingbox{
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.quotebox{
+        background-color: #eee;
+        opacity: 0.6;
+        font-size: xxlarge;
+        padding:20px;
+        font-family: 'Alegreya', serif;
+        -moz-border-radius: 15px;
+border-radius: 15px;
+
+}
+
+.quotebox-text{
+        background-color: #eee;
+        opacity: 0.8;
+        font-size: xxlarge;
+        padding:20px;
+        font-family: 'Alegreya', serif;
+        -moz-border-radius: 15px;
+border-radius: 15px;
+
+}
+
