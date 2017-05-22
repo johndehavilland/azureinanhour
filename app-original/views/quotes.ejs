@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-
-
 <html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
-
 <head>
 
     <meta charset="utf-8">
@@ -38,7 +34,7 @@
     <div class="view">
         <!--Intro content-->
         <div class="full-bg-img flex-center">
-
+            
         </div>
 
         <div class="row">
@@ -49,14 +45,6 @@
                 <div class="boundingbox">
 
                     <div class="quotebox-text">
-                        <div class="row">
-
-                            <div class="col-md-10">
-                                <h1>
-                                    <%= typeof msg!='undefined' ? msg : '' %>
-                                </h1>
-                            </div>
-                        </div>
                         <form action="/quotes" method="POST">
 
                             <div class="row">
@@ -71,14 +59,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="quote">quote</label>
-                                        <input class="form-control input-lg" id="quote" name="quote" type="text">
+                                            <label for="quote">quote</label>
+                                            <input class="form-control input-lg" name="quote" id="quote" type="text">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-default">Submit</button>
+                                  <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
                             </div>
                         </form>

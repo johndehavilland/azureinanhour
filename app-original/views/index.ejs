@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
-
 <head>
 
     <meta charset="utf-8">
@@ -37,17 +35,7 @@
     <div class="view">
         <!--Intro content-->
         <div class="full-bg-img flex-center">
-            <!--/.Mask-->
-            <form action="/quotes" method="POST">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="form-group">
-                            <label for="code">Search</label>
-                            <input type="text" id="search" placeholder="search" name="name" class="form-control input-lg">
-                        </div>
-                    </div>
-                </div>
-            </form>
+
         </div>
 
         <div class="row justify-content-md-center">
@@ -59,9 +47,6 @@
 
                         <div class="col-md-2 col-md-offset-8">
                             <a class="btn btn-primary btn-lg" href="/quotes" role="button">Add a quote</a>
-                        </div>
-                         <div class="col-md-2 col-md-offset-8">
-                            <a class="btn btn-primary btn-lg" href="/meme?quote=<%= quotes[0].quote %>" role="button">Meme</a>
                         </div>
                         <div class="col-md-11">
                             <div class="quotebox">
@@ -85,38 +70,8 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <script>
-        $(function () {
-
-            $("#search").autocomplete({
-                select: function (e, ui) {
-                    $("#search").val(ui.item.label);
-                    return false;
-                },
-
-                source: function (request, response) {
-                    $.ajax({
-                        url: "search?q=" + request.term,
-                        data: request,
-                        success: function (data) {
-                            //var ParsedObject = $.parseJSON(data);
-                            response($.map(data, function (item) {
-                                return {
-                                    label: item.quote + "-" + item.name,
-                                    value: item.name
-                                };
-
-                            }))
-                        }
-                    });
-                }
-            });
-        });
-    </script>
 
 </body>
 
